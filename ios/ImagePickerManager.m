@@ -458,6 +458,10 @@ RCT_EXPORT_METHOD(showImagePicker:(NSDictionary *)options callback:(RCTResponseS
                 if (pickedAsset.creationDate) {
                     self.response[@"timestamp"] = [[ImagePickerManager ISO8601DateFormatter] stringFromDate:pickedAsset.creationDate];
                 }
+                if(pickedAsset.pixelHeight && pickedAsset.pixelWidth){
+                    self.response[@"height"] = @(pickedAsset.pixelHeight);
+                    self.response[@"width"] = @(pickedAsset.pixelWidth);
+                }
             }
 
             if ([videoURL.URLByResolvingSymlinksInPath.path isEqualToString:videoDestinationURL.URLByResolvingSymlinksInPath.path] == NO) {
